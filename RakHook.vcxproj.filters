@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{05020434-3274-41d3-8170-bbc73b2f4dc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header">
+      <UniqueIdentifier>{74620b37-47b0-49ec-95aa-cfb7cec9320b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header\rakhook">
+      <UniqueIdentifier>{2a9c2030-7332-4c36-a4b8-63d209251ca7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="header\raknet">
+      <UniqueIdentifier>{1932a6ac-42cd-460b-ac56-f5596bba0ffa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\rakhook">
+      <UniqueIdentifier>{74d38268-2457-443d-b6eb-410b323e0452}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\raknet">
+      <UniqueIdentifier>{5df5aaa1-f6c0-48c9-aa32-4cdda51e3988}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\RakHook\offsets.hpp">
+      <Filter>header\rakhook</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakHook\rakhook.hpp">
+      <Filter>header\rakhook</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakHook\samp.hpp">
+      <Filter>header\rakhook</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakHook\detail.hpp">
+      <Filter>header\rakhook</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakHook\hooked_rakclient_interface.hpp">
+      <Filter>header\rakhook</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakNet\DS_Map.h">
+      <Filter>header\raknet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakNet\DS_OrderedList.h">
+      <Filter>header\raknet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakNet\DS_Queue.h">
+      <Filter>header\raknet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakNet\NetworkTypes.h">
+      <Filter>header\raknet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakNet\PacketEnumerations.h">
+      <Filter>header\raknet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakNet\PacketPriority.h">
+      <Filter>header\raknet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakNet\PluginInterface.h">
+      <Filter>header\raknet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakNet\RakClientInterface.h">
+      <Filter>header\raknet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakNet\StringCompressor.h">
+      <Filter>header\raknet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakNet\BitStream.h">
+      <Filter>header\raknet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakNet\DS_HuffmanEncodingTree.h">
+      <Filter>header\raknet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakNet\DS_HuffmanEncodingTreeNode.h">
+      <Filter>header\raknet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakNet\DS_LinkedList.h">
+      <Filter>header\raknet</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RakNet\DS_List.h">
+      <Filter>header\raknet</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\RakHook\samp.cpp">
+      <Filter>src\rakhook</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RakHook\offsets.cpp">
+      <Filter>src\rakhook</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RakHook\rakhook.cpp">
+      <Filter>src\rakhook</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RakNet\PluginInterface.cpp">
+      <Filter>src\raknet</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RakNet\StringCompressor.cpp">
+      <Filter>src\raknet</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RakNet\BitStream.cpp">
+      <Filter>src\raknet</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RakNet\DS_HuffmanEncodingTree.cpp">
+      <Filter>src\raknet</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

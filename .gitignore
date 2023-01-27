@@ -40,3 +40,4 @@ build*/
 # IDE
 .idea
 .vscode
+.vs
