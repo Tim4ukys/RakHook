@@ -2,6 +2,7 @@
 #define RAKHOOK_HPP
 
 #include <functional>
+#include <mutex>
 
 #include <polyhook2/Detour/x86Detour.hpp>
 
@@ -14,9 +15,12 @@ namespace rakhook {
 template <typename T>
 struct on_event : public std::vector<std::function<T>> {
     on_event &operator+=(std::function<T> func) {
+        std::lock_guard<std::mutex> lock{m_lock};
         this->push_back(func);
         return *this;
     }
+private:
+    std::mutex m_lock;
 };
 
 using send_t        = bool(RakNet::BitStream *bs, PacketPriority &priority, PacketReliability &reliability, char &ord_channel);
