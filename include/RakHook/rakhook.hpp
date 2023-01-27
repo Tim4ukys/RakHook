@@ -3,7 +3,7 @@
 
 #include <functional>
 
-#include <cyanide/hook_impl_polyhook.hpp>
+#include <polyhook2/Detour/x86Detour.hpp>
 
 #include "RakHook/samp.hpp"
 #include "RakNet/RakClientInterface.h"
