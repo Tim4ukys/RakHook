@@ -22,7 +22,7 @@ using handle_rpc_packet_t = bool(__thiscall *)(void *, const char *, int, Player
 std::uint64_t destroy_rakclient_interface_orig = 0;
 std::uint64_t handle_rpc_packet_orig           = 0;
 
-void destroy_rakclient_interface(void *rakclient_interface) {
+void __cdecl destroy_rakclient_interface(void *rakclient_interface) {
     if (rakclient_interface == hooked_interface) {
         rakclient_interface = rakhook::orig;
         delete hooked_interface;
@@ -30,7 +30,7 @@ void destroy_rakclient_interface(void *rakclient_interface) {
     return ((void(*)(void*))destroy_rakclient_interface_orig)(rakclient_interface);
 }
 
-bool handle_rpc_packet(void *rp, const char *data, int length, PlayerID playerid) {
+bool __fastcall handle_rpc_packet(void *rp, void* trash, const char *data, int length, PlayerID playerid) {
     rakpeer   = rp;
     gplayerid = playerid;
 
@@ -88,8 +88,8 @@ bool handle_rpc_packet(void *rp, const char *data, int length, PlayerID playerid
     if (bits_data)
         incoming.WriteBits(callback_bs->GetData(), bits_data, false);
 
-    return ((bool (*)(void*, const char*, int, PlayerID))handle_rpc_packet_orig)
-        (rp, std::bit_cast<char *>(incoming.GetData()), incoming.GetNumberOfBytesUsed(), playerid);
+    return ((bool(__fastcall *)(void *, void *, const char *, int, PlayerID))handle_rpc_packet_orig)
+        (rp, trash, std::bit_cast<char *>(incoming.GetData()), incoming.GetNumberOfBytesUsed(), playerid);
 }
 
 //std::unique_ptr<cyanide::polyhook_x86<destroy_ri_t, decltype(&destroy_rakclient_interface)>> destroy_ri_hook;
@@ -117,14 +117,13 @@ bool rakhook::initialize() {
     *rakclient_interface = std::bit_cast<RakClientInterface *>(hooked_interface);
 
     if (!static_cast<bool>(destroy_ri_hook)) {
-        auto func       = std::bit_cast<destroy_ri_t>(offsets::destroy_interface(true));
-        destroy_ri_hook = std::make_unique<PLH::x86Detour>((std::uint64_t)func, 
+        destroy_ri_hook = std::make_unique<PLH::x86Detour>((std::uint64_t)offsets::destroy_interface(true), 
             (std::uint64_t)&destroy_rakclient_interface, 
             &destroy_rakclient_interface_orig);
     }
     if (!static_cast<bool>(handle_rpc_hook)) {
-        auto func       = std::bit_cast<handle_rpc_packet_t>(offsets::handle_rpc_packet(true));
-        handle_rpc_hook = std::make_unique<PLH::x86Detour>((std::uint64_t)func, 
+        handle_rpc_hook =
+            std::make_unique<PLH::x86Detour>((std::uint64_t)offsets::handle_rpc_packet(true), 
             (std::uint64_t)&handle_rpc_packet, 
             &handle_rpc_packet_orig);
     }
